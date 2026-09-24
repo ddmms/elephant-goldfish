@@ -4,10 +4,10 @@ This file is read by Gemini CLI. The user has pointed you at this repo and asked
 
 ## How to fetch the rest of this repo's content
 
-There is no local working copy on the target machine — you got here by streaming this file's text through `gh api`. Fetch the remaining files (the five skill templates and the GEMINI.md snippet) the same way, on demand:
+There is no local working copy on the target machine — you got here by streaming this file's text through `gh api`. Fetch the remaining files (the five skill templates and the AGENTS.md snippet) the same way, on demand:
 
 ```sh
-gh api repos/vshvedov/elephant-goldfish/contents/<PATH> -H 'Accept: application/vnd.github.raw'
+gh api "repos/ddmms/elephant-goldfish/contents/<PATH>?ref=ddmms" -H 'Accept: application/vnd.github.raw'
 ```
 
 Files this procedure references later:
@@ -24,7 +24,7 @@ Recommended: fetch them all up front into a tmp dir, then read locally through t
 ```sh
 mkdir -p /tmp/elephant-goldfish/gemini/commands
 for f in gemini/gemini-md-snippet.md gemini/commands/eg-brainstorm.md gemini/commands/eg-prd.md gemini/commands/eg-fix-bug.md gemini/commands/eg-new-feature.md gemini/commands/eg-precommit-review.md; do
-  gh api "repos/vshvedov/elephant-goldfish/contents/${f}" -H 'Accept: application/vnd.github.raw' > "/tmp/elephant-goldfish/${f}"
+  gh api "repos/ddmms/elephant-goldfish/contents/${f}?ref=ddmms" -H 'Accept: application/vnd.github.raw' > "/tmp/elephant-goldfish/${f}"
 done
 ```
 
@@ -32,13 +32,13 @@ After this, every reference to `gemini/commands/<name>.md` or `gemini/gemini-md-
 
 ## Step 0: Confirm the target
 
-The user invoked you from a working directory that is the target repo. Confirm: print the target's absolute path and ask the user to confirm before doing anything destructive. If the target already has any of `.gemini/skills/{eg-brainstorm,eg-prd,eg-fix-bug,eg-new-feature,eg-precommit-review}`, ask whether to overwrite, augment, or abort.
+The user invoked you from a working directory that is the target repo. Confirm: print the target's absolute path and ask the user to confirm before doing anything destructive. If the target already has any of `.agents/skills/{eg-brainstorm,eg-prd,eg-fix-bug,eg-new-feature,eg-precommit-review}` (or legacy `.gemini/skills/`), ask whether to overwrite, augment, or abort.
 
 ## Step 1: Inspect the stack
 
 Read these files in the target if they exist (parallel reads):
 
-- `GEMINI.md` (top of repo) — existing conventions, commit policy, PR workflow, tooling notes
+- `AGENTS.md` (or legacy `GEMINI.md`, top of repo) — existing conventions, commit policy, PR workflow, tooling notes
 - `package.json` → `scripts`, `dependencies`, `devDependencies` (Node / web stacks)
 - `Gemfile` → linter, test framework, security scanner (Rails / Ruby)
 - `pubspec.yaml` → Flutter / Dart
@@ -64,7 +64,7 @@ STACK PROFILE
 - Security scanner + how to invoke (or "n/a"):
 - Dev server: command + URL:
 - Code-generation step required before tests (build_runner, protoc, codegen) + when:
-- Existing PR workflow, code review process, or merge gates documented in GEMINI.md:
+- Existing PR workflow, code review process, or merge gates documented in AGENTS.md (or legacy GEMINI.md):
 - Commit message convention from `git log`:
 - Multi-tenancy / auth / scoping concerns the reviewer should always check:
 - Stack-specific gotchas (N+1 in Rails, dispose in Flutter, audio-thread allocs in real-time, hydration in Next, etc.):
@@ -95,19 +95,20 @@ Specifically:
 
 For each of the five workflows (eg-brainstorm, eg-prd, eg-fix-bug, eg-new-feature, eg-precommit-review):
 
-1. Create the skill directory: `mkdir -p .gemini/skills/<skill-name>`
-2. Write the fully substituted template to `.gemini/skills/<skill-name>/SKILL.md`
+1. Create the skill directory: `mkdir -p .agents/skills/<skill-name>`
+2. Write the fully substituted template to `.agents/skills/<skill-name>/SKILL.md`
 3. Automatically install the skill in the workspace using the `run_shell_command` tool:
    ```sh
-   gemini skills install .gemini/skills/<skill-name> --scope workspace
+   gemini skills install .agents/skills/<skill-name> --scope workspace
    ```
 
-## Step 4: Update GEMINI.md
+## Step 4: Update AGENTS.md
 
-Read the snippet from your prefetched copy at `/tmp/elephant-goldfish/gemini/gemini-md-snippet.md`. Tailor the placeholders in it to match the target's setup and inject it into the target's `GEMINI.md`.
+Read the snippet from your prefetched copy at `/tmp/elephant-goldfish/gemini/gemini-md-snippet.md`. Tailor the placeholders in it to match the target's setup and inject it into the target's `AGENTS.md`.
 
-- If the target already has a `GEMINI.md`, inject the snippet near the top.
-- If no `GEMINI.md` exists, propose creating one and ask the user before writing.
+- If the target already has an `AGENTS.md`, inject the snippet near the top.
+- If the target has an existing legacy `GEMINI.md` but no `AGENTS.md`, read conventions from `GEMINI.md`, inject the snippet into a new `AGENTS.md` (preserving existing conventions), but do NOT create or re-create `GEMINI.md`.
+- If no `AGENTS.md` (or `GEMINI.md`) exists, propose creating `AGENTS.md` and ask the user before writing. Do not create `GEMINI.md`.
 
 ## Step 5: Sanity-check the output
 
@@ -122,7 +123,7 @@ For each generated `SKILL.md` file:
 Print to the user:
 - Stack profile (confirmed or corrected by user)
 - Skill packages created and installed locally
-- GEMINI.md change
+- AGENTS.md change
 - Anything you couldn't infer
 - **IMPORTANT:** Instruct the user that they must run `/skills reload` in their interactive Gemini CLI session to activate the newly installed skills.
 

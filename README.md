@@ -24,7 +24,7 @@ In your target repo, open a Claude Code session and paste this message:
 
 ```
 Fetch the elephant-goldfish bootstrap procedure with
-`gh api repos/vshvedov/elephant-goldfish/contents/claude/BOOTSTRAP.md -H 'Accept: application/vnd.github.raw'`,
+`gh api "repos/ddmms/elephant-goldfish/contents/claude/BOOTSTRAP.md?ref=ddmms" -H 'Accept: application/vnd.github.raw'`,
 then follow the procedure to set up the elephant/goldfish workflow here, preserving any existing setups for other AIs.
 ```
 
@@ -45,7 +45,7 @@ In the same target repo, open a Codex session and paste this message:
 
 ```
 Fetch the Codex elephant-goldfish bootstrap procedure with
-`gh api repos/vshvedov/elephant-goldfish/contents/codex/BOOTSTRAP.md -H 'Accept: application/vnd.github.raw'`,
+`gh api "repos/ddmms/elephant-goldfish/contents/codex/BOOTSTRAP.md?ref=ddmms" -H 'Accept: application/vnd.github.raw'`,
 then follow the procedure to set up the Codex elephant/goldfish workflow here, preserving any existing setups for other AIs.
 ```
 
@@ -63,7 +63,7 @@ In your target repo, open a Gemini CLI session and paste this message:
 
 ```
 Fetch the Gemini CLI elephant-goldfish bootstrap procedure with
-`gh api repos/vshvedov/elephant-goldfish/contents/gemini/BOOTSTRAP.md -H 'Accept: application/vnd.github.raw'`,
+`gh api "repos/ddmms/elephant-goldfish/contents/gemini/BOOTSTRAP.md?ref=ddmms" -H 'Accept: application/vnd.github.raw'`,
 then follow the procedure to set up the Gemini CLI elephant/goldfish workflow here, preserving any existing setups for other AIs.
 ```
 

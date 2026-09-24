@@ -9,14 +9,14 @@ If you have already bootstrapped a repository and want to pull in the latest log
 # Update Elephant/Goldfish Patterns
 There is an update available for the elephant/goldfish workflow. Please sync this repository with the upstream templates while preserving my local stack adaptations:
 
-1. **Fetch Upstream:** Go to https://github.com/vshvedov/elephant-goldfish.
+1. **Fetch Upstream:** Go to https://github.com/ddmms/elephant-goldfish (branch `ddmms`).
 2. **Identify Adapter:** Identify which agent I am (Claude Code, Gemini CLI, or Codex) and read the corresponding `BOOTSTRAP.md` in the upstream repo.
 3. **Compare & Merge:**
-   - Read my local command/skill files. Claude uses `.claude/commands/`; Gemini uses `.gemini/skills/`; Codex uses shared user skills in `${CODEX_HOME:-~/.codex}/skills/eg-*`.
+   - Read my local command/skill files. Claude uses `.claude/commands/`; Gemini uses `.agents/skills/` (or legacy `.gemini/skills/`); Codex uses shared user skills in `${CODEX_HOME:-~/.codex}/skills/eg-*`.
    - For Claude/Gemini, identify the stack-specific values I previously filled in (commands for linting, testing, dev URLs, etc.).
    - Fetch the NEW templates from upstream and merge the new logic/steps into my local files.
    - **Constraint:** For Claude/Gemini, do NOT revert my concrete stack commands back to `[BOOTSTRAP]` markers; keep the local implementations. For Codex, keep the shared skills project-agnostic so they inspect the current repo at runtime.
-4. **Update Snippet:** Update the `CLAUDE.md`, `GEMINI.md`, or `AGENTS.md` snippet if the upstream version has improved.
+4. **Update Snippet:** Update the `CLAUDE.md` or `AGENTS.md` (or legacy `GEMINI.md`) snippet if the upstream version has improved.
 5. **Report:** Summarize what new features or logic steps were added and confirm that local test/lint commands were preserved.
 ```
 
@@ -33,7 +33,7 @@ I have updated the core elephant/goldfish pattern in one of the adapters. Please
 2. **Propagate:** Apply the same logical updates (e.g., adding a new step, refining the goldfish prompt) to the other adapters.
 3. **Adapt Syntax:** Ensure you respect the target platform's specific syntax:
    - **Claude:** Uses `Agent` tool and `.claude/commands/` format.
-   - **Gemini:** Uses `invoke_agent` tool and `.gemini/skills/` format.
+   - **Gemini:** Uses `invoke_agent` tool and `.agents/skills/` format.
    - **Codex:** Uses `SKILL.md` format and `$eg-` skill mention syntax.
 4. **Update Snippets:** Ensure the `snippet.md` or `gemini-md-snippet.md` files are updated if the command descriptions changed.
 5. **Verify:** Confirm all `BOOTSTRAP.md` files still point to the correct updated paths.
