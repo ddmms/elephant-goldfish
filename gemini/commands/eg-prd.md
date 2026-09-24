@@ -47,7 +47,7 @@ Cache the answers. They drive the rest of the run.
 Before asking the user anything else, the elephant must understand the existing codebase well enough to know what's already there. Spawn **1-2 goldfish in parallel** using `invoke_agent` (`agent_name="codebase_investigator"` or `"generalist"`):
 
 - **Goldfish A — "Existing surfaces"**: Find code that already touches the same domain as the seed. Report file:line citations of the closest analogues, the data model, the URL routes.
-- **Goldfish B — "Architecture and conventions"**: Read GEMINI.md, the package manifests, recent commits referencing this area. Report constraints.
+- **Goldfish B — "Architecture and conventions"**: Read AGENTS.md (or legacy GEMINI.md if present), the package manifests, recent commits referencing this area. Report constraints.
 
 **Execute the `invoke_agent` tool calls concurrently.**
 
@@ -57,7 +57,7 @@ After both return, the elephant prints a **codebase brief** (5-15 lines):
 CODEBASE BRIEF
 - Closest existing surfaces: <files / routes / models with one-line description each>
 - Patterns to mirror: <e.g. "uses Drift schema migrations">
-- Constraints from GEMINI.md or recent decisions: <multi-tenant, etc.>
+- Constraints from AGENTS.md / GEMINI.md or recent decisions: <multi-tenant, etc.>
 - Observed gaps the seed leaves open: <preview of what Step 2 will turn into questions>
 ```
 

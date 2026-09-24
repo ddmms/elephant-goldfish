@@ -75,7 +75,7 @@ Hunt for:
 - Performance: N+1 queries, sync work in hot loops.
 - Test coverage gaps: code paths not covered.
 [BOOTSTRAP: stack-specific Hunt for items go here as additional bullets]
-- Project-rule violations from GEMINI.md (cite the relevant section).
+- Project-rule violations from AGENTS.md or legacy GEMINI.md (cite the relevant section).
 - Dead code.
 
 Do NOT surface:

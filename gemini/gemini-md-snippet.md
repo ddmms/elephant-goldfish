@@ -1,12 +1,12 @@
-# Snippet to inject into target GEMINI.md
+# Snippet to inject into target AGENTS.md
 
-This is the section that gets added to the target repo's `GEMINI.md` during bootstrap. Tailor the placeholders, then inject. Do not include this header line or the surrounding text — only what's between the `<<<SNIPPET_START>>>` and `<<<SNIPPET_END>>>` markers.
+This is the section that gets added to the target repo's `AGENTS.md` during bootstrap. Tailor the placeholders, then inject. Do not include this header line or the surrounding text — only what's between the `<<<SNIPPET_START>>>` and `<<<SNIPPET_END>>>` markers.
 
 ```
 <<<SNIPPET_START>>>
 ## Working with Gemini CLI (Elephant/Goldfish Skills)
 
-This project has installed five [Gemini CLI Skills](https://github.com/google/gemini-cli) in `.gemini/skills/` that wrap an "elephant/goldfish" workflow inspired by [this article](https://drensin.medium.com/elephants-goldfish-and-the-new-golden-age-of-software-engineering-c33641a48874): the "elephant" is the working session with full context; the "goldfish" is a fresh subagent spawned via `invoke_agent` with no prior context.
+This project has installed five [Gemini CLI Skills](https://github.com/google/gemini-cli) in `.agents/skills/` that wrap an "elephant/goldfish" workflow inspired by [this article](https://drensin.medium.com/elephants-goldfish-and-the-new-golden-age-of-software-engineering-c33641a48874): the "elephant" is the working session with full context; the "goldfish" is a fresh subagent spawned via `invoke_agent` with no prior context.
 
 For implementation work, the goldfish stress-tests a problem/design doc or a diff. For brainstorming and PRD writing, multiple goldfish run in parallel with different lenses to generate divergent ideas or research findings the elephant synthesizes.
 

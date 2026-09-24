@@ -43,7 +43,7 @@ The goldfish gets ONLY the symptom + repro from Step 1. It does NOT get your hyp
 **Prompt body to send:**
 
 ```
-Independent diagnosis of a bug in this repo ([BOOTSTRAP: one-sentence project description]; GEMINI.md at the repo root has the full architecture).
+Independent diagnosis of a bug in this repo ([BOOTSTRAP: one-sentence project description]; AGENTS.md at the repo root has the full architecture, or check legacy GEMINI.md if present).
 
 Symptom: <FILL IN from Step 1>
 Repro: <FILL IN from Step 1>

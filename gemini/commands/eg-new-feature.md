@@ -90,7 +90,7 @@ Finds gaps that block implementation.
 
 ```
 <<<DESIGN_START>>>
-You are a fresh reviewer with no prior context. Below is a design doc for a feature in the [BOOTSTRAP: project name + one-sentence description] repo (GEMINI.md at the repo root has the architecture).
+You are a fresh reviewer with no prior context. Below is a design doc for a feature in the [BOOTSTRAP: project name + one-sentence description] repo (AGENTS.md at the repo root has the architecture, or check legacy GEMINI.md if present).
 
 Your job: read the design doc, then read the surfaces it claims to touch, and find holes BEFORE implementation starts. Specifically:
 
@@ -100,7 +100,7 @@ Your job: read the design doc, then read the surfaces it claims to touch, and fi
 - Does the doc misunderstand any existing code? Look up the surfaces it claims to touch and check.
 - Are there failure modes the doc missed?
 [BOOTSTRAP: stack-specific gap items]
-- Are there project-specific gotchas the doc ignores? GEMINI.md is your reference.
+- Are there project-specific gotchas the doc ignores? AGENTS.md (or legacy GEMINI.md) is your reference.
 
 [BOOTSTRAP: PRD note]
 
@@ -147,7 +147,7 @@ DESIGN DOC:
 
 A round is **ready** iff Pass B closes with `design ready` AND Pass C closes with `implementation ready`. Comprehension is informational: log it, surface it to the user, but do not gate progress on it. If comprehension returns `comprehension unclear` AND the round is otherwise ready, still proceed — but flag in the final report that the doc was unclear in places.
 
-If a round is **not ready**, bundle the critic gaps and readiness open questions (and comprehension feedback if it returned unclear) into a single revise prompt with section labels (`=== CRITIC GAPS ===`, `=== READINESS OPEN QUESTIONS ===`, `=== COMPREHENSION FEEDBACK ===`). Tell the elephant to address EVERY numbered gap across BOTH the CRITIC GAPS and READINESS OPEN QUESTIONS sections — do not collapse or skip because the numbering restarts. Each gap is either: addressed in a doc revision, or rebutted with a verbatim reason citing GEMINI.md or the user's words. Print the revised doc back to the user once both gates close.
+If a round is **not ready**, bundle the critic gaps and readiness open questions (and comprehension feedback if it returned unclear) into a single revise prompt with section labels (`=== CRITIC GAPS ===`, `=== READINESS OPEN QUESTIONS ===`, `=== COMPREHENSION FEEDBACK ===`). Tell the elephant to address EVERY numbered gap across BOTH the CRITIC GAPS and READINESS OPEN QUESTIONS sections — do not collapse or skip because the numbering restarts. Each gap is either: addressed in a doc revision, or rebutted with a verbatim reason citing AGENTS.md (or GEMINI.md) or the user's words. Print the revised doc back to the user once both gates close.
 
 Then re-run Pass B and Pass C against the revised doc (skip Pass A — see above). If the round still does not converge after **three revisions**, the feature is under-specified — **stop and ask the user** for more direction via `ask_user`.
 
