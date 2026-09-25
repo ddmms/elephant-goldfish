@@ -99,7 +99,7 @@ For each of the five workflows (eg-brainstorm, eg-prd, eg-fix-bug, eg-new-featur
 2. Write the fully substituted template to `.agents/skills/<skill-name>/SKILL.md`
 3. Automatically install the skill in the workspace using the `run_shell_command` tool:
    ```sh
-   gemini skills install .agents/skills/<skill-name> --scope workspace
+   agy skills install .agents/skills/<skill-name> --scope workspace
    ```
 
 ## Step 4: Update AGENTS.md

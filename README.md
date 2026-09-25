@@ -486,7 +486,7 @@ After you give Gemini CLI the `gh api` instruction, it will:
 2. Inspect the target repo's stack.
 3. Customize the Gemini SKILL templates in [gemini/commands/](gemini/commands/).
 4. Create workspace-scoped skill folders under `<target>/.gemini/skills/`.
-5. Install the skills locally via the `gemini skills install` command.
+5. Install the skills locally via the `agy skills install` command.
 6. Inject the "Working with Gemini CLI" snippet into `GEMINI.md`.
 7. Print a summary and remind you to run `/skills reload` to activate them.
 
